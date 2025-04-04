@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Windows Vulnerability Scanner</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://kit.fontawesome.com/a14cd6bc3e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="scanner-overlay" id="scanner-overlay">
+    <div class="scanner-spinner"></div>
+    <p>Scanning in progress...</p>
+  </div>
+
+  <div class="dashboard">
+    <header>
+      <h1>🛡️ Windows Vulnerability Scanner</h1>
+      <p>Agent-less System & Network Audit (Team T045)</p>
+    </header>
+
+    <nav>
+      <button class="tab-btn active" data-tab="system">System Scan</button>
+      <button class="tab-btn" data-tab="network">Network Scan</button>
+      <button class="tab-btn" data-tab="report">Reports</button>
+    </nav>
+
+    <main>
+      <!-- System Tab -->
+      <section id="system" class="tab active">
+        <h2>🧠 System Scanner</h2>
+        <p>Check OS patches, services, startup items, policies, etc.</p>
+        <div class="controls">
+          <button class="action-btn" onclick="runScan('system')">Scan</button>
+          <button class="action-btn secondary" onclick="refresh('system')"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar-system"></div>
+        </div>
+
+        <div class="output" id="system-output">Ready to scan.</div>
+      </section>
+
+      <!-- Network Tab -->
+      <section id="network" class="tab">
+        <h2>🌐 Network Scanner</h2>
+        <p>Check open ports, RDP, SMB shares, exposed services, etc.</p>
+        <div class="controls">
+          <button class="action-btn" onclick="runScan('network')">Scan</button>
+          <button class="action-btn secondary" onclick="refresh('network')"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar-network"></div>
+        </div>
+
+        <div class="output" id="network-output">Awaiting scan...</div>
+      </section>
+
+      <!-- Reports Tab -->
+      <section id="report" class="tab">
+        <h2>📄 Reports</h2>
+        <p>Generate and download a local scan report.</p>
+        <button class="action-btn" onclick="generateReport()">Download Latest Report</button>
+        <div class="output" id="report-output">No reports generated yet.</div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© T045 | Cyber Security | Windows 10/11 Ready</p>
+    </footer>
+
+    <div id="toast">Message</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
